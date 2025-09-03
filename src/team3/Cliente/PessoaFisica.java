@@ -1,74 +1,41 @@
 package team3.Cliente;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class PessoaFisica extends Cliente {
-  private static final List<String> CURSOS_VALIDOS = Arrays.asList(
-      "Medicina", "Engenharia", "Direito", "TI", "Pedagogia", "Matemática", "História", "Informática"
-  );
-  private static final List<String> PERIODOS_VALIDOS = Arrays.asList(
-      "Manhã", "Tarde", "Noite"
-  );
+    private String cpf;
+    private String nome;
 
-  private final String curso;
-  private String periodo;
-  private boolean ativo;
-
-  public PessoaFisica(String nome, String email, String telefone, String curso, String periodo) {
-    super(nome, email, telefone);
-
-    if (!CURSOS_VALIDOS.contains(curso)) {
-      throw new IllegalArgumentException("Curso inválido: " + curso);
-    }
-    if (!PERIODOS_VALIDOS.contains(periodo)) {
-      throw new IllegalArgumentException("Período inválido: " + periodo);
+    public PessoaFisica(String cpf, String nome, String telefone) {
+        super(telefone);
+        this.cpf = cpf;
+        this.nome = nome;
     }
 
-    this.curso = curso;
-    this.periodo = periodo;
-    this.ativo = true;
-  }
-
-  public String getCurso() {
-    return curso;
-  }
-
-  public String getPeriodo() {
-    return periodo;
-  }
-
-  public boolean isAtivo() {
-    return ativo;
-  }
-
-  public void trancarMatricula() {
-    this.ativo = false;
-  }
-
-  public void reativarMatricula() {
-    this.ativo = true;
-  }
-
-  public void atualizarPeriodo(String novoPeriodo) {
-    if (!PERIODOS_VALIDOS.contains(novoPeriodo)) {
-      throw new IllegalArgumentException("Período inválido: " + novoPeriodo);
+    // Getters e Setters
+    public String getCpf() {
+        return cpf;
     }
-    this.periodo = novoPeriodo;
-  }
 
-  @Override
-  public boolean podePegarEmprestimo() {
-    return ativo && !isBloqueado();
-  }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-  @Override
-  public double calcularMulta(int diasAtraso) {
-    return diasAtraso * 1.0; // R$ 1 por dia de atraso
-  }
+    @Override
+    public String getNome() {
+        return nome;
+    }
 
-  @Override
-  public int getDiasEmprestimo() {
-    return 7; // Prazo padrão para alunos
-  }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public String getIdentificador() {
+        return cpf;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Pessoa Física - Nome: %s, CPF: %s, Telefone: %s", 
+                nome, cpf, getTelefone());
+    }
 }
