@@ -1,37 +1,73 @@
 package team3.Cliente;
 
-/**
- * Classe abstrata que representa um cliente genérico no sistema de locação.
- * Define os atributos e comportamentos comuns a todos os tipos de clientes.
- */
-public abstract class Cliente {
-    protected String telefone;
-    
-    public Cliente(String telefone) {
-        this.telefone = telefone;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.regex.Pattern;
+
+public abstract class Cliente implements ICliente {
+    private static final AtomicInteger PROX_ID = new AtomicInteger(1);
+    private static final Pattern TEL_BR = Pattern.compile("^\\(?\\d{2}\\)?\\s?9?\\d{4}-?\\d{4}$");
+    private static final Pattern EMAIL = Pattern.compile("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$");
+
+    private final int id;
+    private String email;
+    private String telefone;
+
+    public Cliente(String email, String telefone) {
+        if (!validarEmail(email)) throw new IllegalArgumentException("Email inválido.");
+        if (!validarTelefone(telefone)) throw new IllegalArgumentException("Telefone inválido.");
+
+        this.id = PROX_ID.getAndIncrement();
+        this.email = email.trim();
+        this.telefone = normalizarTelefone(telefone);
     }
-    
-    // Getters e Setters
+
+    protected static boolean validarTelefone(String telefone) {
+        return telefone != null && TEL_BR.matcher(telefone.trim()).matches();
+    }
+
+    protected static String normalizarTelefone(String telefone) {
+        return telefone.replaceAll("\\D", "");
+    }
+
+    protected static boolean validarEmail(String email) {
+        return email != null && EMAIL.matcher(email.trim()).matches();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public String getTelefone() {
         return telefone;
     }
-    
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+
+    public void incluir() {
+
     }
-    
-    /**
-     * Método abstrato para obter o identificador do cliente (CPF ou CNPJ).
-     * @return String contendo o identificador do cliente.
-     */
-    public abstract String getIdentificador();
-    
-    /**
-     * Método abstrato para obter o nome/razão social do cliente.
-     * @return String contendo o nome ou razão social do cliente.
-     */
-    public abstract String getNome();
-    
+
+    public void alterar() {
+
+    }
+
+    public void listar() {
+
+    }
+
+    public void excluir() {
+
+    }
+
+    public void alterarEmail(String novoEmail) {
+        if (!validarEmail(novoEmail)) throw new IllegalArgumentException("Email inválido.");
+        this.email = novoEmail.trim();
+    }
+
     @Override
-    public abstract String toString();
+    public String toString() {
+        return "%s (id=%d)".formatted(email, id);
+    }
 }

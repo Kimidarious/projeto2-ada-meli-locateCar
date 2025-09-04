@@ -1,0 +1,38 @@
+### Build Artifacts ###
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Maven
+/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+
+### IDE-specific files ###
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+/out/
+/gen/
+
+# Eclipse
+.classpath
+.project
+.settings/
+/bin/
+
+# VS Code
+.vscode/
+
+### Operating System ###
+.DS_Store
+Thumbs.db
