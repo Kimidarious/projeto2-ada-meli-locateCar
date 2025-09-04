@@ -14,6 +14,7 @@ public class Veiculo {
 
     /**
      * Cria um livro válido.
+     *
      * @throws IllegalArgumentException se algum campo textual for vazio ou o ano estiver fora da faixa [1450, anoAtual]
      */
     public Veiculo(String titulo, String autor, String editora, int anoPublicacao) {
@@ -36,10 +37,21 @@ public class Veiculo {
         return s == null || s.trim().isEmpty();
     }
 
-    public String getTitulo() { return titulo; }
-    public String getAutor() { return autor; }
-    public String getEditora() { return editora; }
-    public int getAnoPublicacao() { return anoPublicacao; }
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public int getAnoPublicacao() {
+        return anoPublicacao;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -47,8 +59,8 @@ public class Veiculo {
         if (!(o instanceof Veiculo)) return false;
         Veiculo veiculo = (Veiculo) o;
         return anoPublicacao == veiculo.anoPublicacao
-            && titulo.equalsIgnoreCase(veiculo.titulo)
-            && autor.equalsIgnoreCase(veiculo.autor);
+                && titulo.equalsIgnoreCase(veiculo.titulo)
+                && autor.equalsIgnoreCase(veiculo.autor);
     }
 
     @Override
@@ -59,10 +71,10 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Livro{" +
-            "titulo='" + titulo + '\'' +
-            ", autor='" + autor + '\'' +
-            ", editora='" + editora + '\'' +
-            ", anoPublicacao=" + anoPublicacao +
-            '}';
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", editora='" + editora + '\'' +
+                ", anoPublicacao=" + anoPublicacao +
+                '}';
     }
 }

@@ -28,13 +28,9 @@ public class Aluguel {
         if (cliente == null) throw new IllegalArgumentException("Usuário inválido.");
         if (veiculo == null) throw new IllegalArgumentException("Livro inválido.");
         if (dataEmprestimo == null) throw new IllegalArgumentException("Data de empréstimo inválida.");
-        if (dataEmprestimo.isAfter(LocalDate.now())) throw new IllegalArgumentException("Data de empréstimo no futuro.");
+        if (dataEmprestimo.isAfter(LocalDate.now()))
+            throw new IllegalArgumentException("Data de empréstimo no futuro.");
         if (quantidadeDeDias <= 0) throw new IllegalArgumentException("Quantidade de dias deve ser positiva.");
-        if (!cliente.podePegarEmprestimo()) throw new IllegalArgumentException("Usuário não está apto a emprestar.");
-        // Opcional: restringir ao prazo padrão do usuário
-        if (quantidadeDeDias > cliente.getDiasEmprestimo()) {
-            throw new IllegalArgumentException("Prazo solicitado excede o permitido para o usuário.");
-        }
 
         this.cliente = cliente;
         this.veiculo = veiculo;
@@ -42,11 +38,25 @@ public class Aluguel {
         this.quantidadeDeDias = quantidadeDeDias;
     }
 
-    public Cliente getUsuario() { return cliente; }
-    public Veiculo getLivro() { return veiculo; }
-    public LocalDate getDataEmprestimo() { return dataEmprestimo; }
-    public int getQuantidadeDeDias() { return quantidadeDeDias; }
-    public LocalDate getDataDevolucao() { return dataDevolucao; }
+    public Cliente getUsuario() {
+        return cliente;
+    }
+
+    public Veiculo getLivro() {
+        return veiculo;
+    }
+
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public int getQuantidadeDeDias() {
+        return quantidadeDeDias;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
 
     public LocalDate getDataPrevistaDevolucao() {
         return dataEmprestimo.plusDays(quantidadeDeDias);
@@ -69,34 +79,26 @@ public class Aluguel {
 
     /**
      * Registra devolução na data informada.
+     *
      * @throws IllegalStateException se já tiver sido devolvido.
      */
     public void registrarDevolucao(LocalDate dataDevolucao) {
         if (dataDevolucao == null) throw new IllegalArgumentException("Data de devolução inválida.");
         if (isDevolvido()) throw new IllegalStateException("Empréstimo já devolvido.");
-        if (dataDevolucao.isBefore(dataEmprestimo)) throw new IllegalArgumentException("Devolução antes do empréstimo.");
+        if (dataDevolucao.isBefore(dataEmprestimo))
+            throw new IllegalArgumentException("Devolução antes do empréstimo.");
         this.dataDevolucao = dataDevolucao;
-    }
-
-    /**
-     * Calcula o valor da multa com base no tipo de usuário (polimorfismo).
-     */
-    public double valorMulta() {
-        int atraso = diasDeAtraso();
-        return atraso <= 0 ? 0.0 : cliente.calcularMulta(atraso);
     }
 
     @Override
     public String toString() {
         return "Emprestimo{" +
-            "usuario='" + cliente.getNome() + '\'' +
-            ", livro='" + veiculo.getTitulo() + '\'' +
-            ", dataEmprestimo=" + dataEmprestimo +
-            ", dataPrevistaDevolucao=" + getDataPrevistaDevolucao() +
-            ", dataDevolucao=" + (dataDevolucao != null ? dataDevolucao : "—") +
-            ", diasAtraso=" + diasDeAtraso() +
-            ", valorMulta=" + valorMulta() +
-            '}';
+                ", livro='" + veiculo.getTitulo() + '\'' +
+                ", dataEmprestimo=" + dataEmprestimo +
+                ", dataPrevistaDevolucao=" + getDataPrevistaDevolucao() +
+                ", dataDevolucao=" + (dataDevolucao != null ? dataDevolucao : "—") +
+                ", diasAtraso=" + diasDeAtraso() +
+                '}';
     }
 
     @Override
@@ -105,8 +107,8 @@ public class Aluguel {
         if (!(o instanceof Aluguel)) return false;
         Aluguel that = (Aluguel) o;
         return Objects.equals(cliente.getId(), that.cliente.getId())
-            && Objects.equals(veiculo, that.veiculo)
-            && Objects.equals(dataEmprestimo, that.dataEmprestimo);
+                && Objects.equals(veiculo, that.veiculo)
+                && Objects.equals(dataEmprestimo, that.dataEmprestimo);
     }
 
     @Override

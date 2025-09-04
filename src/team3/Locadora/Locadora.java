@@ -123,12 +123,12 @@ public class Locadora {
                     String curso = scanner.nextLine().trim();
                     System.out.print("Período (Manhã/Tarde/Noite): ");
                     String periodo = scanner.nextLine().trim();
-                    cliente = new PessoaFisica(nome, email, telefone, curso, periodo);
+                    cliente = new ClientePF(email, telefone);
                 }
                 case 3 -> {
                     System.out.print("Departamento: ");
                     String departamento = scanner.nextLine().trim();
-                    cliente = new PessoaJuridica(nome, email, telefone, departamento);
+                    cliente = new ClientePJ(email, telefone);
                 }
                 default -> {
                     System.out.println("Tipo inválido!");
@@ -140,7 +140,7 @@ public class Locadora {
                 return;
             }
             adicionarUsuario(cliente.getId(), cliente);
-            System.out.println("Usuário cadastrado: " + cliente.getNome() + " (id=" + cliente.getId() + ")");
+            System.out.println("Usuário cadastrado: "  + " (id=" + cliente.getId() + ")");
         } catch (IllegalArgumentException e) {
             System.out.println("Erro ao cadastrar usuário: " + e.getMessage());
         }
@@ -157,16 +157,12 @@ public class Locadora {
         }
         for (Cliente u : usuarios.values()) {
             System.out.println("ID: " + u.getId());
-            System.out.println("Nome: " + u.getNome());
             System.out.println("Email: " + u.getEmail());
 
-            if (u instanceof PessoaFisica pessoaFisica) {
+            if (u instanceof ClientePF clientePF) {
                 System.out.println("Tipo: " + "Aluno");
-                System.out.println("Curso: " + pessoaFisica.getCurso());
-                System.out.println("Período: " + pessoaFisica.getPeriodo());
-            } else if (u instanceof PessoaJuridica pessoaJuridica) {
+            } else if (u instanceof ClientePJ clientePJ) {
                 System.out.println("Tipo: " + "Professor");
-                System.out.println("Departamento: " + pessoaJuridica.getDepartamento());
             } else {
                 System.out.println("Tipo: Usuário desconhecido.");
             }
@@ -213,7 +209,7 @@ public class Locadora {
         scanner.nextLine();
         Cliente cliente = usuarios.get(idUsuario);
 
-        if (cliente == null || !cliente.podePegarEmprestimo()) {
+        if (cliente == null){ // || !cliente.podePegarEmprestimo()) {
             System.out.println("Usuário inválido ou não pode pegar empréstimo.");
             return;
         }
@@ -229,25 +225,25 @@ public class Locadora {
         if (!removerLivro(veiculo, 1)) return;
 
         LocalDate hoje = LocalDate.now();
-        Aluguel emp = new Aluguel(cliente, veiculo, hoje, cliente.getDiasEmprestimo());
+        Aluguel emp = new Aluguel(cliente, veiculo, hoje, 10);
         aluguels.add(emp);
         System.out.println("Empréstimo registrado com sucesso.");
     }
 
     public void listarEmprestimosAtivos() {
         aluguels.stream()
-            .filter(e -> !e.isDevolvido())
-            .forEach(System.out::println);
+                .filter(e -> !e.isDevolvido())
+                .forEach(System.out::println);
     }
 
     public void listarEmprestimosAtrasados() {
         aluguels.stream()
-            .filter(Aluguel::isAtrasado)
-            .forEach(e -> {
-                System.out.println(e);
-                System.out.println("Dias de atraso: " + e.diasDeAtraso());
-                System.out.println("Multa: R$ " + e.valorMulta());
-            });
+                .filter(Aluguel::isAtrasado)
+                .forEach(e -> {
+                    System.out.println(e);
+                    System.out.println("Dias de atraso: " + e.diasDeAtraso());
+                    System.out.println("Multa: R$ " );//+ e.valorMulta());
+                });
     }
 
     public void registrarDevolucao(Scanner scanner) {
@@ -257,8 +253,8 @@ public class Locadora {
         scanner.nextLine();
 
         List<Aluguel> ativosDoUsuario = aluguels.stream()
-            .filter(e -> e.getUsuario().getId() == id && !e.isDevolvido())
-            .collect(Collectors.toList());
+                .filter(e -> e.getUsuario().getId() == id && !e.isDevolvido())
+                .collect(Collectors.toList());
 
         if (ativosDoUsuario.isEmpty()) {
             System.out.println("Nenhum empréstimo ativo encontrad0.");

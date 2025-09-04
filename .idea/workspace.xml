@@ -4,11 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5627e928-db93-404b-8d29-2deec5ea5801" name="Changes" comment="" />
+    <list default="true" id="5627e928-db93-404b-8d29-2deec5ea5801" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/LocateCar/team3/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/LocateCar/team3/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Cliente/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Cliente/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Cliente/PessoaFisica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Cliente/ClientePF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Cliente/PessoaJuridica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Cliente/ClientePJ.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Locadora/Aluguel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Locadora/Aluguel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Locadora/Locadora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Locadora/Locadora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Locadora/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Locadora/Veiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -19,22 +37,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JRibaSJr"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JRibaSJr&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Kimidarious/projeto2-ada-meli-locateCar.git",
-    "accountId": "32952415-96e5-40c2-83c3-1015a74c18d0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kimidarious/projeto2-ada-meli-locateCar.git&quot;,
+    &quot;accountId&quot;: &quot;32952415-96e5-40c2-83c3-1015a74c18d0&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="324ykbqKYJaR40QQKBbdEcWbWX9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,6 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "riba",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/macbook/Códigos/Java/ada-desenvolva-mais/LocateCar/src/team3",
@@ -55,6 +77,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/Users/macbook/Códigos/Java/ada-desenvolva-mais/LocateCar/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
