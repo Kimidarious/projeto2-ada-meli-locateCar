@@ -2,10 +2,17 @@ package team3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 import team3.Locadora.Locadora;
+<<<<<<< HEAD
 import team3.Veiculo.Veiculo;
 import team3.Cliente.PessoaFisica;
 import team3.Cliente.PessoaJuridica;
+=======
+import team3.Locadora.Veiculo;
+import team3.Cliente.ClientePF;
+import team3.Cliente.ClientePJ;
+>>>>>>> develop
 import team3.Cliente.Cliente;
 
 public class Main {
@@ -61,6 +68,7 @@ public class Main {
     }
 
     private static void seedDados(Locadora locadora) {
+<<<<<<< HEAD
         // Usuarios
         // 3 Professores
         Cliente professor1 = new PessoaJuridica("Professor Xavier", "xavier@xmen.com", "11 99999-9999", "Informática");
@@ -158,5 +166,7 @@ public class Main {
         locadora.adicionarAcervo(
                 new Veiculo("Medicina Interna de Harrison", "J. Larry Jameson", "AMGH", 2018), 3);
 
+=======
+>>>>>>> develop
     }
 }
