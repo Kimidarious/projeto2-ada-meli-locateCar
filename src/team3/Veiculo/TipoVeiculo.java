@@ -1,4 +1,4 @@
-package team3.Locadora.domain;
+package team3.Veiculo;
 
 public enum TipoVeiculo {
     PEQUENO,MEDIO,SUV;

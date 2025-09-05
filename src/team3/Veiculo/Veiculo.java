@@ -1,8 +1,7 @@
-package team3.Locadora.domain;
+package team3.Veiculo;
 
 import java.time.LocalDateTime;
 import java.time.Year;
-import java.util.Objects;
 
 
 /**
@@ -15,11 +14,11 @@ import java.util.Objects;
  * Entidade Livro: dados bibliográficos básicos e identidade por (título, autor, ano).
  */
 public class Veiculo {
-    private String placa;         // identidade
-    private String modelo;              // parte do “nome” que usaremos na busca
+    private String placa;         // identidade única
+    private String modelo;
     private TipoVeiculo tipo;
-    private boolean disponivel;         // true = disponível, false = alugado
-    private LocalDateTime criadoEm;
+    private boolean disponivel;
+    private final LocalDateTime criadoEm;
     private LocalDateTime atualizadoEm;
 
     /**
@@ -83,27 +82,9 @@ public class Veiculo {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Veiculo)) return false;
-        Veiculo veiculo = (Veiculo) o;
-        return anoPublicacao == veiculo.anoPublicacao
-            && titulo.equalsIgnoreCase(veiculo.titulo)
-            && autor.equalsIgnoreCase(veiculo.autor);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(titulo.toLowerCase(), autor.toLowerCase(), anoPublicacao);
-    }
-
-    @Override
     public String toString() {
-        return "Livro{" +
-            "titulo='" + titulo + '\'' +
-            ", autor='" + autor + '\'' +
-            ", editora='" + editora + '\'' +
-            ", anoPublicacao=" + anoPublicacao +
-            '}';
+        return String.format("Veiculo{placa='%s', modelo='%s', tipo=%s, disponivel=%s}",
+                placa, modelo, tipo, disponivel);
     }
+
 }

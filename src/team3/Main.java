@@ -3,7 +3,7 @@ package team3;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import team3.Veiculo.Locadora;
-import team3.Locadora.domain.Veiculo;
+import team3.Veiculo.Veiculo;
 import team3.Cliente.PessoaFisica;
 import team3.Cliente.PessoaJuridica;
 import team3.Cliente.Cliente;
