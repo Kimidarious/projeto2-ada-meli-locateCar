@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.Objects;
 
-
 /**
  * Entidade de domínio: imutável na identidade (placa), mutável em atributos.
  * RN1: placa é o identificador único.
@@ -87,23 +86,21 @@ public class Veiculo {
         if (this == o) return true;
         if (!(o instanceof Veiculo)) return false;
         Veiculo veiculo = (Veiculo) o;
-        return anoPublicacao == veiculo.anoPublicacao
-            && titulo.equalsIgnoreCase(veiculo.titulo)
-            && autor.equalsIgnoreCase(veiculo.autor);
+        return placa.equals(veiculo.placa);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(titulo.toLowerCase(), autor.toLowerCase(), anoPublicacao);
+        return Objects.hash(placa);
     }
 
     @Override
     public String toString() {
-        return "Livro{" +
-            "titulo='" + titulo + '\'' +
-            ", autor='" + autor + '\'' +
-            ", editora='" + editora + '\'' +
-            ", anoPublicacao=" + anoPublicacao +
-            '}';
+        return "Veiculo{" +
+                "placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", tipo=" + tipo +
+                ", disponivel=" + disponivel +
+                '}';
     }
 }
