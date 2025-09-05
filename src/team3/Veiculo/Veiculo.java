@@ -3,7 +3,6 @@ package team3.Veiculo;
 import java.time.LocalDateTime;
 import java.time.Year;
 
-
 /**
  * Entidade de domínio: imutável na identidade (placa), mutável em atributos.
  * RN1: placa é o identificador único.
@@ -82,9 +81,32 @@ public class Veiculo {
     }
 
     @Override
+<<<<<<< HEAD:src/team3/Veiculo/Veiculo.java
     public String toString() {
         return String.format("Veiculo{placa='%s', modelo='%s', tipo=%s, disponivel=%s}",
                 placa, modelo, tipo, disponivel);
+=======
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Veiculo)) return false;
+        Veiculo veiculo = (Veiculo) o;
+        return placa.equals(veiculo.placa);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(placa);
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "placa='" + placa + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", tipo=" + tipo +
+                ", disponivel=" + disponivel +
+                '}';
+>>>>>>> 111e03e6e64b705115c3ea0620048e32c9d13ed4:src/team3/Locadora/domain/Veiculo.java
     }
 
 }
