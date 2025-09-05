@@ -2,7 +2,7 @@ package team3;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import team3.Veiculo.Locadora;
+import team3.Locadora.Locadora;
 import team3.Veiculo.Veiculo;
 import team3.Cliente.PessoaFisica;
 import team3.Cliente.PessoaJuridica;
@@ -64,7 +64,7 @@ public class Main {
         // Usuarios
         // 3 Professores
         Cliente professor1 = new PessoaJuridica("Professor Xavier", "xavier@xmen.com", "11 99999-9999", "Informática");
-        locadora.adicionarUsuario(professor1.getId(), professor1);
+        locadora.adicionarCliente(professor1.getId(), professor1);
 
         Cliente professor2 = new PessoaJuridica("Magneto", "magneto@xmen.com", "11 99999-9999", "Física");
         locadora.adicionarUsuario(professor2.getId(), professor2);
