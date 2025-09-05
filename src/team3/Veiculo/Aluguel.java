@@ -1,6 +1,7 @@
-package team3.Locadora;
+package team3.Veiculo;
 
 import team3.Cliente.Cliente;
+import team3.Locadora.domain.Veiculo;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
