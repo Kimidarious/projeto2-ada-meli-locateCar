@@ -91,7 +91,10 @@ public class Locadora {
                 System.out.println("Tipo: " + "Aluno");
             } else if (u instanceof ClientePJ clientePJ) {
                 System.out.println("Tipo: " + "Professor");
+<<<<<<< HEAD
 >>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
             } else {
                 System.out.println("Erro: Veículo já existe ou placa inválida.");
             }
@@ -252,5 +255,8 @@ public class Locadora {
             System.out.println("Falha ao devolver: livro não pertence ao acervo.");
         }
     }
+<<<<<<< HEAD
 >>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import team3.Locadora.Locadora;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import team3.Veiculo.Veiculo;
 import team3.Cliente.PessoaFisica;
 import team3.Cliente.PessoaJuridica;
@@ -13,6 +14,11 @@ import team3.Locadora.Veiculo;
 import team3.Cliente.ClientePF;
 import team3.Cliente.ClientePJ;
 >>>>>>> develop
+=======
+import team3.Locadora.Veiculo;
+import team3.Cliente.ClientePF;
+import team3.Cliente.ClientePJ;
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
 import team3.Cliente.Cliente;
 
 public class Main {
@@ -68,6 +74,7 @@ public class Main {
     }
 
     private static void seedDados(Locadora locadora) {
+<<<<<<< HEAD
 <<<<<<< HEAD
         // Usuarios
         // 3 Professores
@@ -168,5 +175,7 @@ public class Main {
 
 =======
 >>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
     }
 }

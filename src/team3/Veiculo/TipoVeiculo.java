@@ -1,6 +1,7 @@
 package team3.Veiculo;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 public enum TipoVeiculo {
     PEQUENO(100.00),
     MEDIO(150.00),
@@ -27,6 +28,8 @@ public enum TipoVeiculo {
     }
 }
 =======
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
 /**
  * Enum que representa os tipos de veículos disponíveis para locação,
  * juntamente com seus respectivos valores de diária.
@@ -46,4 +49,7 @@ public enum TipoVeiculo {
         return valorDiaria;
     }
 }
+<<<<<<< HEAD
 >>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443

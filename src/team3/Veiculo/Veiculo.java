@@ -1,6 +1,5 @@
 package team3.Veiculo;
 
-<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -53,7 +52,7 @@ public class Veiculo {
                 ", tipo=" + tipo +
                 ", disponivel=" + disponivel +
                 '}';
-=======
+
 /**
  * Classe abstrata que representa um veículo genérico no sistema de locação.
  * Contém os atributos e comportamentos comuns a todos os tipos de veículos.
@@ -128,6 +127,6 @@ public abstract class Veiculo {
     public String toString() {
         return String.format("Veículo: %s %s %d, Placa: %s, Tipo: %s, %s",
                 marca, modelo, ano, placa, tipo, disponivel ? "Disponível" : "Indisponível");
->>>>>>> develop
+
     }
 }
