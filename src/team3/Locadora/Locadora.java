@@ -1,121 +1,49 @@
 package team3.Locadora;
 
-import team3.Cliente.*;
+import team3.Veiculo.TipoVeiculo;
+import team3.Veiculo.Veiculo;
+import team3.Cliente.Cliente;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Scanner;
 
 public class Locadora {
-    private final Map<Veiculo, Integer> acervo = new HashMap<>();
-    private final Map<Integer, Cliente> usuarios = new HashMap<>();
-    private final List<Aluguel> aluguels = new ArrayList<>();
+    private final Map<String, Veiculo> acervo = new HashMap<>();
+    private final Map<String, Cliente> clientes = new HashMap<>();
 
-    // --- ACERVO ---
+    public boolean cadastroVeiculo(String placa, String modelo, TipoVeiculo tipo) {
+        if (placa == null || placa.isBlank()) return false;
 
-    public void cadastrarLivro(Scanner scanner) {
-        System.out.print("Título: ");
-        String titulo = scanner.nextLine().trim();
-        System.out.print("Autor: ");
-        String autor = scanner.nextLine().trim();
-        System.out.print("Editora: ");
-        String editora = scanner.nextLine().trim();
+        String key = placa.toUpperCase();
+        if (acervo.containsKey(key)) return false;
 
-        System.out.print("Ano de publicação: ");
-        int ano = scanner.nextInt();
-
-        Veiculo veiculo;
-        try {
-            veiculo = new Veiculo(titulo, autor, editora, ano);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao cadastrar livro: " + e.getMessage());
-            return;
-        }
-
-        System.out.print("Quantidade total: ");
-        int quantidade = scanner.nextInt();
-        if (adicionarAcervo(veiculo, quantidade)) {
-            System.out.println(quantidade + " exemplar(es) de '" + veiculo.getTitulo() + "' adicionado(s) com sucesso.");
-        }
-    }
-
-    public Veiculo pesquisarLivroPorTitulo(String titulo) {
-        if (titulo == null || titulo.trim().isEmpty()) return null;
-        for (Veiculo veiculo : acervo.keySet()) {
-            if (veiculo.getTitulo().equalsIgnoreCase(titulo.trim())) {
-                return veiculo;
-            }
-        }
-        return null;
-    }
-
-    public boolean adicionarAcervo(Veiculo veiculo, int quantidade) {
-        if (veiculo == null) {
-            System.out.println("Livro inválido.");
-            return false;
-        }
-        if (quantidade <= 0) {
-            System.out.println("A quantidade deve ser maior que zero.");
-            return false;
-        }
-        acervo.put(veiculo, acervo.getOrDefault(veiculo, 0) + quantidade);
+        Veiculo veiculo = new Veiculo(key, modelo, tipo);
+        acervo.put(key, veiculo);
         return true;
     }
 
-    public boolean removerLivro(Veiculo veiculo, int quantidade) {
-        if (veiculo == null) {
-            System.out.println("Livro não encontrado.");
-            return false;
-        }
-        if (quantidade <= 0) {
-            System.out.println("Quantidade deve ser maior que zero.");
-            return false;
-        }
-        Integer atual = acervo.get(veiculo);
-        if (atual == null) {
-            System.out.println("O livro '" + veiculo.getTitulo() + "' não foi encontrado no acervo.");
-            return false;
-        }
-        if (atual > quantidade) {
-            acervo.put(veiculo, atual - quantidade);
-            System.out.println(quantidade + " exemplar(es) de '" + veiculo.getTitulo() + "' removido(s).");
-            return true;
-        } else if (atual == quantidade) {
-            acervo.remove(veiculo);
-            System.out.println("Todos os exemplares de '" + veiculo.getTitulo() + "' foram removidos.");
-            return true;
-        } else {
-            System.out.println("Não há exemplares suficientes de '" + veiculo.getTitulo() + "'. Apenas " + atual + " em estoque.");
-            return false;
-        }
-    }
+    public void cadastrarVeiculo(Scanner scanner) {
+        System.out.print("Digite a placa do veículo: ");
+        String placa = scanner.nextLine();
 
-    public void listarAcervo() {
-        if (acervo.isEmpty()) {
-            System.out.println("A biblioteca está vazia.");
-            return;
+        System.out.print("Digite o modelo do veículo: ");
+        String modelo = scanner.nextLine();
+
+        System.out.println("Tipos disponíveis: ");
+        for (TipoVeiculo tipo : TipoVeiculo.values()) {
+            System.out.println("- " + tipo);
         }
-        System.out.println("Acervo da Biblioteca:");
-        for (Map.Entry<Veiculo, Integer> e : acervo.entrySet()) {
-            System.out.println("  " + e.getKey().getTitulo() + " - Quantidade: " + e.getValue());
-        }
-    }
 
-    // --- USUÁRIOS ---
-
-    public void cadastrarUsuario(Scanner scanner) {
-        System.out.println("Informe o tipo de usuário (1- Aluno, 2- Aluno Bolsista, 3- Professor, 4- Professor Estagiário): ");
-        int tipo = scanner.nextInt();
-        scanner.nextLine(); // consumir quebra
-
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine().trim();
-        System.out.print("Email: ");
-        String email = scanner.nextLine().trim();
-        System.out.print("Telefone: ");
-        String telefone = scanner.nextLine().trim();
+        System.out.print("Digite o tipo do veículo: ");
+        String tipoStr = scanner.nextLine().toUpperCase();
 
         try {
+<<<<<<< HEAD
+            TipoVeiculo tipo = TipoVeiculo.valueOf(tipoStr);
+            if (cadastroVeiculo(placa, modelo, tipo)) {
+                System.out.println("Veículo cadastrado com sucesso!");
+=======
             Cliente cliente = null;
             switch (tipo) {
                 case 1 -> {
@@ -163,43 +91,86 @@ public class Locadora {
                 System.out.println("Tipo: " + "Aluno");
             } else if (u instanceof ClientePJ clientePJ) {
                 System.out.println("Tipo: " + "Professor");
+<<<<<<< HEAD
+>>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
             } else {
-                System.out.println("Tipo: Usuário desconhecido.");
+                System.out.println("Erro: Veículo já existe ou placa inválida.");
             }
-            System.out.println("--------------------------------");
-        }
-    }
-
-    public void editarUsuario(Scanner scanner) {
-        System.out.print("Informe o ID do usuário a editar: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-
-        Cliente cliente = usuarios.get(id);
-        if (cliente == null) {
-            System.out.println("Usuário não encontrado.");
-            return;
-        }
-        System.out.print("Novo email: ");
-        String novoEmail = scanner.nextLine().trim();
-        try {
-            cliente.alterarEmail(novoEmail);
-            System.out.println("Email atualizado com sucesso.");
         } catch (IllegalArgumentException e) {
-            System.out.println("Email inválido: " + e.getMessage());
+            System.out.println("Tipo de veículo inválido!");
         }
     }
 
-    public void removerUsuario(Scanner scanner) {
-        System.out.print("Informe o ID do usuário a remover: ");
-        int id = scanner.nextInt();
-        if (usuarios.remove(id) != null) {
-            System.out.println("Usuário removido com sucesso.");
-        } else {
-            System.out.println("Usuário não encontrado.");
-        }
+    public void cadastrarCliente(Scanner scanner) {
+        System.out.println("Cadastro de cliente - implementar");
     }
 
+<<<<<<< HEAD
+    public Veiculo pesquisarVeiculoPorPlaca(String placa) {
+        if (placa == null) return null;
+        return acervo.get(placa.toUpperCase());
+    }
+
+    public List<Veiculo> pesquisarVeiculoPorModelo(String modelo) {
+        if (modelo == null) return Collections.emptyList();
+        String m = modelo.toLowerCase();
+        return acervo.values().stream()
+                .filter(v -> v.getModelo().toLowerCase().contains(m))
+                .collect(Collectors.toList());
+    }
+
+    public boolean removerVeiculo(String placa) {
+        if (placa == null) return false;
+        return acervo.remove(placa.toUpperCase()) != null;
+    }
+
+    public List<Veiculo> listarVeiculos() {
+        return new ArrayList<>(acervo.values());
+    }
+
+    public void listarVeiculosDisponiveis() {
+        System.out.println("=== VEÍCULOS DISPONÍVEIS ===");
+        acervo.values().stream()
+                .filter(Veiculo::isDisponivel)
+                .forEach(System.out::println);
+    }
+
+    public void adicionarCliente(String id, Cliente cliente) {
+        clientes.put(id, cliente);
+    }
+
+    public void listarClientes() {
+        System.out.println("=== CLIENTES CADASTRADOS ===");
+        clientes.values().forEach(System.out::println);
+    }
+
+    // Métodos que precisam ser implementados:
+    public void realizarLocacao(Scanner scanner) {
+        System.out.println("Locação - implementar");
+    }
+
+    public void registrarDevolucao(Scanner scanner) {
+        System.out.println("Devolução - implementar");
+    }
+
+    public void listarLocacoesAtivas() {
+        System.out.println("Locações ativas - implementar");
+    }
+
+    public void listarLocacoesAtrasadas() {
+        System.out.println("Locações atrasadas - implementar");
+    }
+
+    public void editarCliente(Scanner scanner) {
+        System.out.println("Editar cliente - implementar");
+    }
+
+    public void removerCliente(Scanner scanner) {
+        System.out.println("Remover cliente - implementar");
+    }
+=======
     // --- EMPRÉSTIMOS ---
 
     public void realizarEmprestimo(Scanner scanner) {
@@ -284,4 +255,8 @@ public class Locadora {
             System.out.println("Falha ao devolver: livro não pertence ao acervo.");
         }
     }
+<<<<<<< HEAD
+>>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
 }
