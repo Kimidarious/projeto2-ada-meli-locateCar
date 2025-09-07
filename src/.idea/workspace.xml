@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e3eebed9-dcf6-4208-9637-bcc60073046f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/team3/Cliente/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/model/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Cliente/PessoaFisica.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/model/PessoaFisica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Cliente/PessoaJuridica.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/model/PessoaJuridica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Veiculo/TipoVeiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/enums/TipoVeiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Veiculo/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/model/Veiculo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Veiculo/VeiculoMedio.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/Veiculo/VeiculoMedio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Veiculo/VeiculoPequeno.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/Veiculo/VeiculoPequeno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/team3/Veiculo/VeiculoSUV.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/Veiculo/VeiculoSUV.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/team3/repository/ClienteRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/team3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/team3/domain/enums/TipoVeiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/domain/enums/TipoVeiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/team3/service/AluguelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/team3/service/AluguelService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757261607524</updated>
-      <workItem from="1757261608840" duration="2138000" />
+      <workItem from="1757261608840" duration="2820000" />
     </task>
     <servers />
   </component>

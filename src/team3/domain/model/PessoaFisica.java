@@ -1,16 +1,25 @@
 package team3.domain.model;
 
-import team3.domain.model.Cliente;
-
 public class PessoaFisica extends Cliente {
-    private final String cpf; // Identificador único
+    private final String cpf;
 
-    public PessoaFisica(String cpf) {
+    public PessoaFisica(String nome, String email, String telefone, String cpf) {
+        this.setNome(nome);
+        this.setEmail(email);
+        this.setTelefone(telefone);
         this.cpf = cpf;
     }
 
     @Override
     public String getDocumento() {
         return this.cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "PessoaFisica {" +
+                "cpf='" + cpf + '\'' + ", " +
+                super.toString() +
+                '}';
     }
 }

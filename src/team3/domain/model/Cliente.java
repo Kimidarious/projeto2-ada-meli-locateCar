@@ -3,9 +3,38 @@ package team3.domain.model;
 public abstract class Cliente {
     private String nome;
     private String email;
-    // ... outros atributos comuns
+    private String telefone;
 
-    public abstract String getDocumento(); // Método abstrato, cada filho implementa o seu
+    public abstract String getDocumento();
 
-    // Getters e Setters...
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    @Override
+    public String toString() {
+        return "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", telefone='" + telefone + '\'';
+    }
 }
