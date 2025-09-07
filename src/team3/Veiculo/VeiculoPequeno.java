@@ -1,5 +1,8 @@
 package team3.Veiculo;
 
+import team3.domain.enums.TipoVeiculo;
+import team3.domain.model.Veiculo;
+
 /**
  * Classe que representa um veículo do tipo PEQUENO no sistema de locação.
  */

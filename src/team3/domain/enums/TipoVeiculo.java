@@ -1,4 +1,4 @@
-package team3.Veiculo;
+package team3.domain.enums;
 
 /**
  * Enum que representa os tipos de veículos disponíveis para locação,
