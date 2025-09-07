@@ -4,19 +4,26 @@ import team3.domain.model.Veiculo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class VeiculoRepository implements IRepository<Veiculo, String> {
 
-    private final List<Veiculo> veiculos = new ArrayList<>();
+    private static final List<Veiculo> veiculos = new ArrayList<>();
 
     @Override
     public void cadastrar(Veiculo veiculo) {
-        // RN1: Veículos não podem ser repetidos
-        if (buscarPorId(veiculo.getPlaca()).isEmpty()) {
-            veiculos.add(veiculo);
-        } else {
-            System.out.println("Erro: Veículo com a placa " + veiculo.getPlaca() + " já existe.");
+        if (buscarPorId(veiculo.getPlaca()).isPresent()) {
+            throw new IllegalArgumentException("Erro: Veículo com a placa " + veiculo.getPlaca() + " já existe.");
         }
+        veiculos.add(veiculo);
+    }
+
+    @Override
+    public void alterar(Veiculo veiculoAtualizado) {
+        buscarPorId(veiculoAtualizado.getPlaca()).ifPresent(veiculoExistente -> {
+            veiculos.remove(veiculoExistente);
+            veiculos.add(veiculoAtualizado);
+        });
     }
 
     @Override
@@ -24,5 +31,16 @@ public class VeiculoRepository implements IRepository<Veiculo, String> {
         return veiculos.stream()
                 .filter(v -> v.getPlaca().equalsIgnoreCase(placa))
                 .findFirst();
+    }
+
+    public List<Veiculo> buscarPorParteDoNome(String nome) {
+        return veiculos.stream()
+                .filter(v -> v.getModelo().toLowerCase().contains(nome.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Veiculo> listarTodos() {
+        return new ArrayList<>(veiculos);
     }
 }

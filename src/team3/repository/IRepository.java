@@ -8,6 +8,6 @@ import java.util.Optional;
 public interface IRepository<T, ID> {
     void cadastrar(T entidade);
     void alterar(T entidade);
-    Optional<T> buscarPorId(ID id); // Optional é uma boa prática para evitar NullPointerException
+    Optional<T> buscarPorId(ID id);
     List<T> listarTodos();
 }
