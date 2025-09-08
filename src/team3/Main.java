@@ -11,7 +11,6 @@ import team3.service.*;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-// ... outras importações
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
