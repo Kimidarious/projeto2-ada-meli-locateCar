@@ -1,7 +1,6 @@
 package team3.service;
 
 import team3.domain.model.*;
-import team3.repository.IRepository;
 import team3.repository.VeiculoRepository;
 
 import java.time.Duration;
