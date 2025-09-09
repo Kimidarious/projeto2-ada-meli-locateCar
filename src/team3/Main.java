@@ -1,287 +1,181 @@
 package team3;
 
-import team3.domain.enums.TipoVeiculo;
-import team3.domain.model.Cliente;
-import team3.domain.model.PessoaFisica;
-import team3.domain.model.PessoaJuridica;
-import team3.domain.model.Veiculo;
-import team3.repository.*;
-import team3.service.*;
-
-import java.util.List;
-import java.util.Optional;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static team3.domain.enums.TipoVeiculo.*;
+import team3.Locadora.Locadora;
+<<<<<<< HEAD
+<<<<<<< HEAD
+import team3.Veiculo.Veiculo;
+import team3.Cliente.PessoaFisica;
+import team3.Cliente.PessoaJuridica;
+=======
+import team3.Locadora.Veiculo;
+import team3.Cliente.ClientePF;
+import team3.Cliente.ClientePJ;
+>>>>>>> develop
+=======
+import team3.Locadora.Veiculo;
+import team3.Cliente.ClientePF;
+import team3.Cliente.ClientePJ;
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
+import team3.Cliente.Cliente;
 
 public class Main {
-    private static final Scanner scanner = new Scanner(System.in);
-    private static final VeiculoRepository veiculoRepository = new VeiculoRepository();
-    private static final ClienteRepository clienteRepository = new ClienteRepository();
-    private static final VeiculoService veiculoService = new VeiculoService(veiculoRepository);
-    private static final ClienteService clienteService = new ClienteService(clienteRepository);
-    private static final AluguelService aluguelService = new AluguelService(veiculoRepository, clienteService);
-
     public static void main(String[] args) {
+        Locadora locadora = new Locadora();
+        seedDados(locadora);
 
-        seedDados();
+        try (Scanner scanner = new Scanner(System.in)) {
+            int opcao;
+            do {
+                mostrarMenu();
+                try {
+                    System.out.print("Escolha uma opção: ");
+                    opcao = scanner.nextInt();
+                    scanner.nextLine(); // consome quebra de linha
 
-        while (true) {
-            exibirMenuPrincipal();
-            int opcao = lerOpcao();
-            processarOpcao(opcao);
+                    switch (opcao) {
+                        case 1 -> locadora.cadastrarUsuario(scanner);
+                        case 2 -> locadora.cadastrarLivro(scanner);
+                        case 3 -> locadora.realizarEmprestimo(scanner);
+                        case 4 -> locadora.registrarDevolucao(scanner);
+                        case 5 -> locadora.listarAcervo();
+                        case 6 -> locadora.listarUsuarios();
+                        case 7 -> locadora.listarEmprestimosAtivos();
+                        case 8 -> locadora.listarEmprestimosAtrasados();
+                        case 9 -> locadora.editarUsuario(scanner);
+                        case 10 -> locadora.removerUsuario(scanner);
+                        case 0 -> System.out.println("Encerrando o sistema...");
+                        default -> System.out.println("Opção inválida. Tente novamente.");
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Digite um número.");
+                    opcao = -1;
+                    scanner.nextLine(); // limpa buffer
+                }
+            } while (opcao != 0);
         }
     }
 
-    private static void exibirMenuPrincipal() {
-        System.out.println("\n--- ADA LocateCar - Locadora de Veículos ---");
-        System.out.println("1. Gerenciar Veículos");
-        System.out.println("2. Gerenciar Clientes");
-        System.out.println("3. Alugar Veículo");
-        System.out.println("4. Devolver Veículo");
-        System.out.println("5. Sair");
-        System.out.print("Escolha uma opção: ");
+    private static void mostrarMenu() {
+        System.out.println("\n===== SISTEMA BIBLIOTECA =====");
+        System.out.println("1. Cadastrar cliente");
+        System.out.println("2. Cadastrar veiculo");
+        System.out.println("3. Realizar locação");
+        System.out.println("4. Registrar devolução");
+        System.out.println("5. Listar veiculos disponíveis");
+        System.out.println("6. Listar clientes");
+        System.out.println("7. Listar locações ativas");
+        System.out.println("8. Listar locações atrasadas");
+        System.out.println("9. Editar cliente");
+        System.out.println("10. Remover cliente");
+        System.out.println("0. Sair");
     }
 
-    private static void exibirSubMenu(String titulo) {
-        System.out.println("\n--- Gerenciar " + titulo + " ---");
-        System.out.println("1. Cadastrar");
-        System.out.println("2. Alterar");
-        System.out.println("3. Buscar");
-        System.out.println("4. Listar Todos");
-        System.out.println("5. Voltar ao Menu Principal");
-        System.out.print("Escolha uma opção: ");
-    }
+    private static void seedDados(Locadora locadora) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+        // Usuarios
+        // 3 Professores
+        Cliente professor1 = new PessoaJuridica("Professor Xavier", "xavier@xmen.com", "11 99999-9999", "Informática");
+        locadora.adicionarCliente(professor1.getId(), professor1);
 
+        Cliente professor2 = new PessoaJuridica("Magneto", "magneto@xmen.com", "11 99999-9999", "Física");
+        locadora.adicionarUsuario(professor2.getId(), professor2);
 
-    private static int lerOpcao() {
-        try {
-            return Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Opção inválida. Tente novamente.");
-            return -1;
-        }
-    }
+        Cliente professor3 = new PessoaJuridica("Girafales", "professorgirafales@chaves.com", "11 99999-9999", "Letras");
+        locadora.adicionarUsuario(professor3.getId(), professor3);
 
-    private static void processarOpcao(int opcao) {
-        switch (opcao) {
-            case 1:
-                gerenciarVeiculos();
-                break;
-            case 2:
-                gerenciarClientes();
-                break;
-            case 3:
-                alugarVeiculo();
-                break;
-            case 4:
-                devolverVeiculo();
-                break;
-            case 5:
-                System.out.println("Obrigado por utilizar o sistema!");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Opção inválida.");
-        }
-    }
+// 3 Alunos
+        Cliente aluno1 = new PessoaFisica("Chaves", "chaves@vila.com", "11 99999-9999", "História", "Manhã");
+        locadora.adicionarUsuario(aluno1.getId(), aluno1);
 
-    private static void gerenciarVeiculos() {
-        while(true) {
-            exibirSubMenu("Veículos");
-            int opcao = lerOpcao();
-            if(opcao == 5) break;
+        Cliente aluno2 = new PessoaFisica("Quico", "quico@vila.com", "11 99999-9999", "Matemática", "Tarde");
+        locadora.adicionarUsuario(aluno2.getId(), aluno2);
 
-            switch(opcao) {
-                case 1: cadastrarVeiculo(); break;
-                case 2: alterarVeiculo(); break;
-                case 3: buscarVeiculo(); break;
-                case 4: listarTodosVeiculos(); break;
-                default: System.out.println("Opção inválida.");
-            }
-        }
-    }
+        Cliente aluno3 = new PessoaFisica("Cebolinha", "cebolinha@bairro.com", "11 99999-9999", "Informática", "Noite");
+        locadora.adicionarUsuario(aluno3.getId(), aluno3);
 
-    private static void gerenciarClientes() {
-        while(true) {
-            exibirSubMenu("Clientes");
-            int opcao = lerOpcao();
-            if(opcao == 5) break;
+        // ACERVO
+        // Matemática
+        locadora.adicionarAcervo(
+                new Veiculo("A Matéria dos Números", "Marcus du Sautoy", "Zahar", 2018), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("O Último Teorema de Fermat", "Simon Singh", "Record", 1997), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("O Homem que Calculava", "Malba Tahan", "Record", 1938), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("História da Matemática", "Carl B. Boyer", "Blucher", 1968), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Matemática Divertida e Curiosa", "Malba Tahan", "Record", 1940), 3);
 
-            switch(opcao) {
-                case 1: cadastrarCliente(); break;
-                case 2: alterarCliente(); break;
-                case 3: buscarCliente(); break;
-                case 4: listarTodosClientes(); break;
-                default: System.out.println("Opção inválida.");
-            }
-        }
-    }
+        // Informática
+        locadora.adicionarAcervo(
+                new Veiculo("Clean Code", "Robert C. Martin", "Prentice Hall", 2008), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Código Limpo para Java", "Robert C. Martin", "Alta Books", 2011), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Engenharia de Software", "Ian Sommerville", "Pearson", 2016), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Design Patterns", "Erich Gamma", "Addison-Wesley", 1994), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Algoritmos: Teoria e Prática", "Thomas H. Cormen", "MIT Press", 2009), 3);
 
-    private static void cadastrarVeiculo() {
-        try {
-            System.out.print("Digite a placa: ");
-            String placa = scanner.nextLine();
-            System.out.print("Digite o modelo: ");
-            String modelo = scanner.nextLine();
-            System.out.print("Digite o fabricante: ");
-            String fabricante = scanner.nextLine();
-            System.out.print("Digite o tipo (PEQUENO, MEDIO, SUV): ");
-            TipoVeiculo tipo = TipoVeiculo.valueOf(scanner.nextLine().toUpperCase());
+        // Letras
+        locadora.adicionarAcervo(new Veiculo("Dom Casmurro", "Machado de Assis", "Garnier", 1899),
+                3);
+        locadora.adicionarAcervo(
+                new Veiculo("Memórias Póstumas de Brás Cubas", "Machado de Assis", "Garnier", 1881), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Grande Sertao: Veredas", "João Guimarães Rosa", "José Olympio", 1956), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("O Cortiço", "Aluísio Azevedo", "Domínio Público", 1890), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Capitães da Areia", "Jorge Amado", "José Olympio", 1937), 3);
 
-            Veiculo veiculo = new Veiculo(placa, modelo, fabricante, tipo);
-            veiculoService.cadastrarVeiculo(veiculo);
-            System.out.println("Veículo cadastrado com sucesso!");
-        } catch (Exception e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
-    }
+        // Física
+        locadora.adicionarAcervo(
+                new Veiculo("Uma Breve História do Tempo", "Stephen Hawking", "Bantam Books", 1988), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("O Universo numa Casca de Noz", "Stephen Hawking", "Bantam Books", 2001), 3);
+        locadora.adicionarAcervo(new Veiculo("Cosmos", "Carl Sagan", "Random House", 1980), 3);
+        locadora.adicionarAcervo(new Veiculo("O Tecido do Cosmos", "Brian Greene", "Vintage", 2004),
+                3);
+        locadora.adicionarAcervo(new Veiculo("A Ordem do Tempo", "Carlo Rovelli", "Objetiva", 2017),
+                3);
 
-    private static void alterarVeiculo() {
-        System.out.print("Digite a placa do veículo a ser alterado: ");
-        String placa = scanner.nextLine();
-        Optional<Veiculo> veiculoOpt = veiculoService.buscarVeiculoPorPlaca(placa);
+        // História
+        locadora.adicionarAcervo(
+                new Veiculo("Sapiens: Uma Breve História da Humanidade", "Yuval Noah Harari",
+                        "Harvill Secker", 2011), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Homo Deus: Uma Breve História do Amanhã", "Yuval Noah Harari",
+                        "Harvill Secker", 2015), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("A História do Mundo para Quem Tem Pressa", "Emma Marriott", "Valentina",
+                        2014), 3);
+        locadora.adicionarAcervo(new Veiculo("História do Brasil", "Boris Fausto", "Edusp", 1995),
+                3);
+        locadora.adicionarAcervo(
+                new Veiculo("As Veias Abertas da América Latina", "Eduardo Galeano", "Siglo XXI", 1971),
+                3);
 
-        if (veiculoOpt.isPresent()) {
-            Veiculo veiculo = veiculoOpt.get();
-            System.out.print("Novo modelo (atual: " + veiculo.getModelo() + "): ");
-            veiculo.setModelo(scanner.nextLine());
-            System.out.print("Novo fabricante (atual: " + veiculo.getFabricante() + "): ");
-            veiculo.setFabricante(scanner.nextLine());
+        // Medicina
+        locadora.adicionarAcervo(
+                new Veiculo("O Imperador de Todos os Males", "Siddhartha Mukherjee", "Scribner", 2010),
+                3);
+        locadora.adicionarAcervo(
+                new Veiculo("O Gene: Uma História Íntima", "Siddhartha Mukherjee", "Scribner", 2016), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("A História da Medicina", "Paul Strathern", "Zahar", 2016), 3);
+        locadora.adicionarAcervo(new Veiculo("O Corpo Fala", "Pierre Weil", "Vozes", 1974), 3);
+        locadora.adicionarAcervo(
+                new Veiculo("Medicina Interna de Harrison", "J. Larry Jameson", "AMGH", 2018), 3);
 
-            veiculoService.alterarVeiculo(veiculo);
-            System.out.println("Veículo alterado com sucesso!");
-        } else {
-            System.out.println("Veículo não encontrado.");
-        }
-    }
-
-    private static void buscarVeiculo() {
-        System.out.print("Digite parte do modelo do veículo para buscar: ");
-        String modelo = scanner.nextLine();
-        List<Veiculo> veiculosEncontrados = veiculoService.buscarVeiculoPorModelo(modelo);
-
-        if (veiculosEncontrados.isEmpty()) {
-            System.out.println("Nenhum veículo encontrado com este modelo.");
-        } else {
-            System.out.println("--- Veículos Encontrados ---");
-            veiculosEncontrados.forEach(System.out::println);
-        }
-    }
-
-    private static void listarTodosVeiculos() {
-        List<Veiculo> veiculos = veiculoService.listarTodosVeiculos();
-        if (veiculos.isEmpty()) {
-            System.out.println("Nenhum veículo cadastrado.");
-        } else {
-            System.out.println("--- Lista de Veículos ---");
-            veiculos.forEach(System.out::println);
-        }
-    }
-
-    private static void cadastrarCliente() {
-        System.out.print("Pessoa Física (1) ou Jurídica (2)? ");
-        int tipoCliente = lerOpcao();
-
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-        System.out.print("Telefone: ");
-        String telefone = scanner.nextLine();
-
-        try {
-            if(tipoCliente == 1) {
-                System.out.print("CPF: ");
-                String cpf = scanner.nextLine();
-                clienteService.cadastrarCliente(new PessoaFisica(nome, email, telefone, cpf));
-            } else if (tipoCliente == 2) {
-                System.out.print("CNPJ: ");
-                String cnpj = scanner.nextLine();
-                clienteService.cadastrarCliente(new PessoaJuridica(nome, email, telefone, cnpj));
-            } else {
-                System.out.println("Tipo de cliente inválido.");
-                return;
-            }
-            System.out.println("Cliente cadastrado com sucesso!");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
-    }
-
-    private static void alterarCliente() {
-        System.out.print("Digite o documento (CPF/CNPJ) do cliente a ser alterado: ");
-        String documento = scanner.nextLine();
-        Optional<Cliente> clienteOpt = clienteService.buscarClientePorDocumento(documento);
-
-        if (clienteOpt.isPresent()) {
-            Cliente cliente = clienteOpt.get();
-            System.out.print("Novo nome (atual: " + cliente.getNome() + "): ");
-            cliente.setNome(scanner.nextLine());
-            System.out.print("Novo email (atual: " + cliente.getEmail() + "): ");
-            cliente.setEmail(scanner.nextLine());
-            System.out.print("Novo telefone (atual: " + cliente.getTelefone() + "): ");
-            cliente.setTelefone(scanner.nextLine());
-
-            clienteService.alterarCliente(cliente);
-            System.out.println("Cliente alterado com sucesso!");
-        } else {
-            System.out.println("Cliente não encontrado.");
-        }
-    }
-
-    private static void buscarCliente() {
-        System.out.print("Digite o documento (CPF/CNPJ) do cliente: ");
-        String documento = scanner.nextLine();
-        Optional<Cliente> clienteOpt = clienteService.buscarClientePorDocumento(documento);
-
-        if (clienteOpt.isPresent()) {
-            System.out.println("--- Cliente Encontrado ---");
-            System.out.println(clienteOpt.get());
-        } else {
-            System.out.println("Cliente não encontrado.");
-        }
-    }
-
-    private static void listarTodosClientes() {
-        List<Cliente> clientes = clienteService.listarTodosClientes();
-        if (clientes.isEmpty()) {
-            System.out.println("Nenhum cliente cadastrado.");
-        } else {
-            System.out.println("--- Lista de Clientes ---");
-            clientes.forEach(System.out::println);
-        }
-    }
-
-    private static void alugarVeiculo() {
-        System.out.print("Digite a placa do veículo a ser alugado: ");
-        String placa = scanner.nextLine();
-        System.out.print("Digite o documento (CPF/CNPJ) do cliente: ");
-        String documento = scanner.nextLine();
-        System.out.print("Digite o local do aluguel: ");
-        String local = scanner.nextLine();
-
-        aluguelService.alugarVeiculo(placa, documento, local);
-    }
-
-    private static void devolverVeiculo() {
-        System.out.print("Digite a placa do veículo a ser devolvido: ");
-        String placa = scanner.nextLine();
-
-        aluguelService.devolverVeiculo(placa);
-    }
-
-    private static void seedDados(){
-        veiculoService.cadastrarVeiculo(new Veiculo("AAA-0A00", "MODELO1", "FABRICANTE1", PEQUENO));
-        veiculoService.cadastrarVeiculo(new Veiculo("BBB-0B00", "MODELO2", "FABRICANTE2", MEDIO));
-        veiculoService.cadastrarVeiculo(new Veiculo("CCC-0C00", "MODELO3", "FABRICANTE3", SUV));
-
-        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF1", "pf1@cliente.com.br", "1199999-9999", "999.999.999-99"));
-        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF2", "pf2@cliente.com.br", "1188888-9999", "888.888.888-88"));
-        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF3", "pf3@cliente.com.br", "1177777-7777", "777.777.777-77"));
-
-        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ1", "pj1@cliente.com.br", "1199999-9999", "55.555.555.0001-55"));
-        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ2", "pj2@cliente.com.br", "1188888-8888", "44.444.444.0001-44"));
-        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ3", "pj3@cliente.com.br", "1177777-8888", "33.333.333.0001-33"));
+=======
+>>>>>>> develop
+=======
+>>>>>>> 05c86956dd0764470be0e0f682909026c49bc443
     }
 }
