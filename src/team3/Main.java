@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import static team3.domain.enums.TipoVeiculo.*;
+
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
     private static final VeiculoRepository veiculoRepository = new VeiculoRepository();
@@ -20,8 +22,10 @@ public class Main {
     private static final ClienteService clienteService = new ClienteService(clienteRepository);
     private static final AluguelService aluguelService = new AluguelService(veiculoRepository, clienteService);
 
-
     public static void main(String[] args) {
+
+        seedDados();
+
         while (true) {
             exibirMenuPrincipal();
             int opcao = lerOpcao();
@@ -265,5 +269,19 @@ public class Main {
         String placa = scanner.nextLine();
 
         aluguelService.devolverVeiculo(placa);
+    }
+
+    private static void seedDados(){
+        veiculoService.cadastrarVeiculo(new Veiculo("AAA-0A00", "MODELO1", "FABRICANTE1", PEQUENO));
+        veiculoService.cadastrarVeiculo(new Veiculo("BBB-0B00", "MODELO2", "FABRICANTE2", MEDIO));
+        veiculoService.cadastrarVeiculo(new Veiculo("CCC-0C00", "MODELO3", "FABRICANTE3", SUV));
+
+        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF1", "pf1@cliente.com.br", "1199999-9999", "999.999.999-99"));
+        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF2", "pf2@cliente.com.br", "1188888-9999", "888.888.888-88"));
+        clienteService.cadastrarCliente(new PessoaFisica("CLIENTE PF3", "pf3@cliente.com.br", "1177777-7777", "777.777.777-77"));
+
+        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ1", "pj1@cliente.com.br", "1199999-9999", "55.555.555.0001-55"));
+        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ2", "pj2@cliente.com.br", "1188888-8888", "44.444.444.0001-44"));
+        clienteService.cadastrarCliente(new PessoaJuridica("CLIENTE PJ3", "pj3@cliente.com.br", "1177777-8888", "33.333.333.0001-33"));
     }
 }

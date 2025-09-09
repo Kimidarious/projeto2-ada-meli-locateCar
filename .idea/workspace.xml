@@ -5,11 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5627e928-db93-404b-8d29-2deec5ea5801" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/projeto2-ada-meli-locateCar.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/projeto2-ada-meli-locateCar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projeto2-ada-meli-locateCar.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/enums/TipoVeiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/model/Aluguel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/model/Cliente.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/model/PessoaFisica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/model/PessoaJuridica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/domain/model/Veiculo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/repository/ClienteRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/repository/IRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/repository/VeiculoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/service/AluguelService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/service/ClienteService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out/production/projeto2-ada-meli-locateCar/team3/service/VeiculoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto2-ada-meli-locateCar.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/team3/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/team3/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +61,12 @@
     &quot;assignee&quot;: &quot;JRibaSJr&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Kimidarious/projeto2-ada-meli-locateCar.git",
-    "accountId": "e9b46f8e-207c-4c21-8c76-f229233122a5"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kimidarious/projeto2-ada-meli-locateCar.git&quot;,
+    &quot;accountId&quot;: &quot;e9b46f8e-207c-4c21-8c76-f229233122a5&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
@@ -51,19 +81,22 @@
   &quot;associatedIndex&quot;: 1
 }</component>
   <component name="ProjectId" id="324ykbqKYJaR40QQKBbdEcWbWX9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "judev",
+    "git-widget-placeholder": "Kim",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Ju-st/Projetos Programação GitHub/Projetos ADA/Locadora-Veiculos/projeto2-ada-meli-locateCar",
@@ -72,8 +105,8 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/Users/macbook/Códigos/Java/ada-desenvolva-mais/LocateCar/src/Main.java",
-    "project.structure.last.edited": "Project",
+    "onboarding.tips.debug.path": "/Users/macbook/Códigos/Java/ada-desenvolva-mais/projeto2-ada-meli-locateCar/src/Main.java",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
@@ -83,6 +116,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/team3" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -97,6 +133,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
